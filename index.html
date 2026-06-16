@@ -1,95 +1,101 @@
-<!doctype html><html><head></head><body><!DOCTYPE html>
-<html lang="ja">
+<!doctype html><html><head></head><body><!doctype html>
+<html>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>今釣れない理由</title>
-
-	<style>
-		body {
-			margin: 0;
-			background: #000;
-			color: #fff;
-			font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-		}
-
-		#app {
-			width: 90%;
-			max-width: 500px;
-			text-align: center;
-		}
-
-		h1 {
-			font-size: 2rem;
-			font-weight: 300;
-			margin-bottom: 60px;
-		}
-
-		.colors {
-			display: flex;
-			justify-content: center;
-			gap: 30px;
-		}
-
-		.color-btn {
-			width: 70px;
-			height: 70px;
-			border-radius: 50%;
-			border: none;
-			cursor: pointer;
-		}
-
-		.red {
-			background: #c0392b;
-		}
-
-		.blue {
-			background: #2980b9;
-		}
-
-		.green {
-			background: #27ae60;
-		}
-
-		.message {
-			font-size: 1.8rem;
-			line-height: 1.8;
-			margin: 40px 0;
-		}
-
-		button.action {
-			background: none;
-			color: white;
-			border: 1px solid #666;
-			padding: 12px 20px;
-			margin: 10px;
-			cursor: pointer;
-			border-radius: 8px;
-		}
-
-		button.action:hover {
-			border-color: white;
-		}
-
-		.goodluck {
-			font-size: 2rem;
-			letter-spacing: 2px;
-			margin-top: 40px;
-		}
-	</style>
-</head>
+<head></head>
 
 <body>
+	<!DOCTYPE html>
+	<html lang="ja">
 
-	<div id="app"></div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>今釣れない理由</title>
 
-	<script>
-		const messages = [
+		<style>
+			body {
+				margin: 0;
+				background: #000;
+				color: #fff;
+				font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+			}
+
+			#app {
+				width: 90%;
+				max-width: 500px;
+				text-align: center;
+			}
+
+			h1 {
+				font-size: 2rem;
+				font-weight: 300;
+				margin-bottom: 60px;
+			}
+
+			.colors {
+				display: flex;
+				justify-content: center;
+				gap: 30px;
+			}
+
+			.color-btn {
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+				border: none;
+				cursor: pointer;
+			}
+
+			.red {
+				background: #c0392b;
+			}
+
+			.blue {
+				background: #2980b9;
+			}
+
+			.green {
+				background: #27ae60;
+			}
+
+			.message {
+				font-size: 1.8rem;
+				line-height: 1.8;
+				margin: 40px 0;
+			}
+
+			button.action {
+				background: none;
+				color: white;
+				border: 1px solid #666;
+				padding: 12px 20px;
+				margin: 10px;
+				cursor: pointer;
+				border-radius: 8px;
+			}
+
+			button.action:hover {
+				border-color: white;
+			}
+
+			.goodluck {
+				font-size: 2rem;
+				letter-spacing: 2px;
+				margin-top: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="app"></div>
+
+		<script>
+			const messages = [
 
 "もう少し右かもしれへんな",
 "そこじゃない気がする",
@@ -217,17 +223,32 @@ function showHonne(){
 
 function showGoodLuck(){
 
-    app.innerHTML = `
-        <div class="goodluck">
-            Good Luck.
-        </div>
-    `;
+app.innerHTML = `
+<div class="goodluck">
+	Good Luck.
+</div>
+
+<div id="closeBtn" style="
+                margin-top:40px;
+                color:#888;
+                cursor:pointer;
+                font-size:0.95rem;
+             ">
+	閉じる
+</div>
+`;
+
+document
+.getElementById("closeBtn")
+.addEventListener("click", showStart);
 }
 
 showStart();
 
-	</script>
+		</script>
 
+	</body>
+
+	</html>
 </body>
-
-</html></body><html>
+<html></body><html>
