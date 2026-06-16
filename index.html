@@ -1,0 +1,233 @@
+<!doctype html><html><head></head><body><!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>今釣れない理由</title>
+
+	<style>
+		body {
+			margin: 0;
+			background: #000;
+			color: #fff;
+			font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+
+		#app {
+			width: 90%;
+			max-width: 500px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 2rem;
+			font-weight: 300;
+			margin-bottom: 60px;
+		}
+
+		.colors {
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+		}
+
+		.color-btn {
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			border: none;
+			cursor: pointer;
+		}
+
+		.red {
+			background: #c0392b;
+		}
+
+		.blue {
+			background: #2980b9;
+		}
+
+		.green {
+			background: #27ae60;
+		}
+
+		.message {
+			font-size: 1.8rem;
+			line-height: 1.8;
+			margin: 40px 0;
+		}
+
+		button.action {
+			background: none;
+			color: white;
+			border: 1px solid #666;
+			padding: 12px 20px;
+			margin: 10px;
+			cursor: pointer;
+			border-radius: 8px;
+		}
+
+		button.action:hover {
+			border-color: white;
+		}
+
+		.goodluck {
+			font-size: 2rem;
+			letter-spacing: 2px;
+			margin-top: 40px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="app"></div>
+
+	<script>
+		const messages = [
+
+"もう少し右かもしれへんな",
+"そこじゃない気がする",
+"惜しいところまでは来てるよ",
+"さっきのは悪くなかった",
+"もう一回だけやってみる？",
+"まだ魚は見つけてへんみたいやね",
+"今日はちょっと慎重みたい",
+
+"あと5分だけ待ってみる？",
+"今じゃない気がするな",
+"もう少ししたら変わるかも",
+"次の潮までいてみたら？",
+"帰るなら止めへんけど",
+"まだ帰る時間ちゃう気もする",
+
+"ちょっと焦ってる？",
+"頑張りすぎてるんちゃうかな",
+"力、入ってるよ",
+"考えすぎかもしれへんね",
+"今日は楽しめてる？",
+"そんなに急がんでもええのに",
+
+"さっき、惜しかったんよ",
+"気付いてへんかった？",
+"一回だけ近くまで来てた",
+"今はおらんけど、また来るかも",
+"なんとなくやけど、終わりではない気がする",
+"今日は何もない日でもなさそう",
+
+"誰かに悪いことしてへん？",
+"心当たり、ほんまにない？",
+"忘れてるだけちゃうかな",
+"気のせいやと思うけど",
+"まぁ、気のせいやと思う",
+
+"君は優しすぎるんかもね",
+"ちゃんとやってると思うよ",
+"そんな日もあるやん",
+"今日は魚の方が悪いわ",
+"自分ばっかり責めたらあかんよ",
+
+"次、あるかも",
+"今のは覚えとき",
+"今日はまだ終わってへんよ",
+"たぶんやけどね",
+"知らんけど"
+];
+
+let firstMessage = "";
+
+function randomMessage(exclude=""){
+    let pool = messages.filter(m => m !== exclude);
+
+    if(pool.length === 0){
+        return messages[0];
+    }
+
+    return pool[Math.floor(Math.random()*pool.length)];
+}
+
+function showStart(){
+
+    app.innerHTML = `
+        <h1>今釣れない理由</h1>
+
+        <div class="colors">
+            <button class="color-btn red"></button>
+            <button class="color-btn blue"></button>
+            <button class="color-btn green"></button>
+        </div>
+    `;
+
+    document.querySelectorAll(".color-btn")
+        .forEach(btn=>{
+            btn.addEventListener("click",showAnswer);
+        });
+}
+
+function showAnswer(){
+
+    firstMessage = randomMessage();
+
+    app.innerHTML = `
+        <h1>今釣れない理由</h1>
+
+        <div class="message">
+            ${firstMessage}
+        </div>
+
+        <button class="action" id="honne">
+            本音を聞く
+        </button>
+
+        <button class="action" id="skip">
+            聞かない
+        </button>
+    `;
+
+    document
+        .getElementById("honne")
+        .addEventListener("click",showHonne);
+
+    document
+        .getElementById("skip")
+        .addEventListener("click",showGoodLuck);
+}
+
+function showHonne(){
+
+    const second = randomMessage(firstMessage);
+
+    app.innerHTML = `
+        <h1>本音</h1>
+
+        <div class="message">
+            ${second}
+        </div>
+
+        <div class="goodluck">
+            Good Luck.
+        </div>
+    `;
+}
+
+function showGoodLuck(){
+
+    app.innerHTML = `
+        <div class="goodluck">
+            Good Luck.
+        </div>
+    `;
+}
+
+showStart();
+
+	</script>
+
+</body>
+
+</html></body><html>
